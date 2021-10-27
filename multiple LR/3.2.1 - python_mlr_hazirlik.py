@@ -75,7 +75,7 @@ print(cinsiyet)
 
 sonuc3 = pd.DataFrame(data = c[:,:1], index = range(22), columns = ['cinsiyet'])
 print(sonuc3)
-
+ 
 
 
 #dataframe birlestirme islemi
@@ -89,6 +89,14 @@ print(s2)
 from sklearn.model_selection import train_test_split
 
 x_train, x_test,y_train,y_test = train_test_split(s,sonuc3,test_size=0.33, random_state=0)
+
+
+from sklearn.linear_model import LinearRegression
+
+regressor = LinearRegression()
+regressor.fit(x_train, y_train)
+
+y_pred = regressor.predict(x_test)
 
 
 
