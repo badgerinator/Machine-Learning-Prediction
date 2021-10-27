@@ -50,7 +50,7 @@ veriler2 = veriler.apply(preprocessing.LabelEncoder().fit_transform)
 c = veriler2.iloc[:,:1]
 from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder()
-c=ohe.fit_transform(c).toarray()
+#c=ohe.fit_transform(c).toarray()
 print(c)
 
 havadurumu = pd.DataFrame(data = c, index = range(14), columns=['o','r','s'],)
@@ -61,7 +61,7 @@ print(sonveriler)
 #verilerin egitim ve test icin bolunmesi
 from sklearn.model_selection import train_test_split
 x_train, x_test,y_train,y_test = train_test_split(sonveriler.iloc[:,:-1],sonveriler.iloc[:,-1:],test_size=0.33, random_state=0)
-
+"""
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(x_train,y_train)
@@ -70,7 +70,7 @@ regressor.fit(x_train,y_train)
 y_pred = regressor.predict(x_test)
 
 print(y_pred)
-
+"""
 
 ### BACKWARD ELIMINATION TIMEEEE
 
