@@ -12,10 +12,12 @@ import pandas as pd
 
 #2.veri onisleme
 #2.1.veri yukleme
-veriler = pd.read_csv("multiple LR/veriler.csv")
+veriler = pd.read_csv('veriler.csv')
 #pd.read_csv("veriler.csv")
 #test
 print(veriler)
+Yas = veriler.iloc[:,1:4].values
+print(Yas)
 
 #encoder: Kategorik -> Numeric
 ulke = veriler.iloc[:,0:1].values
@@ -28,7 +30,6 @@ le = preprocessing.LabelEncoder()
 ulke[:,0] = le.fit_transform(veriler.iloc[:,0])
 
 print(ulke)
-
 
 ohe = preprocessing.OneHotEncoder()
 ulke = ohe.fit_transform(ulke).toarray()
@@ -48,21 +49,6 @@ c[:,-1] = le.fit_transform(veriler.iloc[:,-1])
 print(c)
 
 
-ohe = preprocessing.OneHotEncoder()
-c = ohe.fit_transform(c).toarray()
-print(c)
-
-from sklearn.impute import SimpleImputer
-
-imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
-
-
-Yas = veriler.iloc[:,1:4].values
-print(Yas)
-imputer = imputer.fit(Yas[:,1:4])
-Yas[:,1:4] = imputer.transform(Yas[:,1:4])
-print(Yas)
-
 #numpy dizileri dataframe donusumu
 sonuc = pd.DataFrame(data=ulke, index = range(22), columns = ['fr','tr','us'])
 print(sonuc)
@@ -75,7 +61,6 @@ print(cinsiyet)
 
 sonuc3 = pd.DataFrame(data = c[:,:1], index = range(22), columns = ['cinsiyet'])
 print(sonuc3)
- 
 
 
 #dataframe birlestirme islemi
@@ -92,11 +77,30 @@ x_train, x_test,y_train,y_test = train_test_split(s,sonuc3,test_size=0.33, rando
 
 
 from sklearn.linear_model import LinearRegression
-
 regressor = LinearRegression()
-regressor.fit(x_train, y_train)
+regressor.fit(x_train,y_train)
 
 y_pred = regressor.predict(x_test)
+
+boy = s2.iloc[:,3:4].values
+print(boy)
+sol = s2.iloc[:,:3]
+sag = s2.iloc[:,4:]
+
+veri = pd.concat([sol,sag],axis=1)
+
+x_train, x_test,y_train,y_test = train_test_split(veri,boy,test_size=0.33, random_state=0)
+
+
+r2 = LinearRegression()
+r2.fit(x_train,y_train)
+
+y_pred = r2.predict(x_test)
+
+
+
+
+
 
 
 
