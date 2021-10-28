@@ -62,7 +62,7 @@ model.compile(optimizer="adam",loss="mse")
 
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
-model.fit(x=x_train, y = y_train,validation_data=(x_test,y_test),batch_size=275,epochs=300)
+model.fit(x=x_train, y = y_train,validation_data=(x_test,y_test),batch_size=250,epochs=300)
 
 # loss and prediction sequence
 

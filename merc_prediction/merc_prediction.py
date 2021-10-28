@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sbn
 
-dataFrame = pd.read_excel("merc.xlsx")
+dataFrame = pd.read_excel("merc_prediction/merc.xlsx")
 
 editedDF = dataFrame.sort_values("price",ascending = False).iloc[131:]
 
