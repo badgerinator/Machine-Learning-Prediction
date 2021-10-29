@@ -6,20 +6,31 @@ Created on Mon Jul  6 18:50:13 2020
 """
 
 #1.kutuphaneler
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
 # veri yukleme
+
 veriler = pd.read_csv('maaslar.csv')
+
+
+#DF slice
 
 x = veriler.iloc[:,1:2]
 y = veriler.iloc[:,2:]
+
+
+#to nparray
+
 X = x.values
 Y = y.values
 
 
 #linear regression
+
 from sklearn.linear_model import LinearRegression
 lin_reg = LinearRegression()
 lin_reg.fit(X,Y)
@@ -30,6 +41,7 @@ plt.show()
 
 
 #polynomial regression
+
 from sklearn.preprocessing import PolynomialFeatures
 poly_reg = PolynomialFeatures(degree = 2)
 x_poly = poly_reg.fit_transform(X)
