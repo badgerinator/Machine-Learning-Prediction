@@ -60,7 +60,7 @@ model.add(Dense(1))
 
 model.compile(optimizer="adam",loss="mse")
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error,mean_absolute_percentage_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error,mean_absolute_percentage_error,r2_score
 
 model.fit(x=x_train, y = y_train,validation_data=(x_test,y_test),batch_size=125,epochs=1000)
 #epochs ve batch size'ı değiştirerek mae'u düşürmek ?
@@ -75,6 +75,7 @@ prediction_sequence = model.predict(x_test)
 
 print(mean_absolute_error(y_test,prediction_sequence))
 print(mean_absolute_percentage_error(y_test,prediction_sequence))
+print(r2_score(y_test,prediction_sequence))
 plt.scatter(y_test,prediction_sequence)
 plt.plot(y_test,y_test,"r-*")
 plt.show()
