@@ -47,7 +47,7 @@ print(x_poly)
 lin_reg2 = LinearRegression()
 lin_reg2.fit(x_poly,y)
 plt.scatter(X,Y,color = 'red')
-plt.plot(X,lin_reg2.predict(poly_reg.fit_transform(X)), color = 'blue')
+plt.plot(X,lin_reg2.predict(x_poly), color = 'blue')
 plt.show()
 
 #tahminler
