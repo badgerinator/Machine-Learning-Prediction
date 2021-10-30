@@ -62,7 +62,7 @@ model.compile(optimizer="adam",loss="mse")
 
 from sklearn.metrics import mean_squared_error, mean_absolute_error,mean_absolute_percentage_error,r2_score
 
-model.fit(x=x_train, y = y_train,validation_data=(x_test,y_test),batch_size=125,epochs=1000)
+model.fit(x=x_train, y = y_train,validation_data=(x_test,y_test),batch_size=250,epochs=1000)
 #epochs ve batch size'ı değiştirerek mae'u düşürmek ?
 
 # loss and prediction sequence
